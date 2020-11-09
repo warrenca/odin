@@ -37,6 +37,8 @@ class Website extends Model
         'cron_key',
         'visual_diff_urls',
         'visual_diff_enabled',
+        'slack_channel',
+        'name',
     ];
 
     protected static function boot()
@@ -201,8 +203,11 @@ class Website extends Model
      */
     public function setUrlAttribute($value)
     {
-        $parts = parse_url($value);
+        $this->attributes['url'] = $value;
+        if (!env('USE_FULL_WEBSITE_URL')) {
+            $parts = parse_url($value);
 
-        $this->attributes['url'] = sprintf('%s://%s', $parts['scheme'], $parts['host']);
+            $this->attributes['url'] = sprintf('%s://%s', $parts['scheme'], $parts['host']);
+        }
     }
 }

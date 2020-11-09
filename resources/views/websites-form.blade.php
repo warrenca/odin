@@ -7,6 +7,12 @@
     'required' => true,
 ])
 
+@include('maelstrom::inputs.text', [
+    'name' => 'name',
+    'label' => 'Name',
+    'help' => 'Any name you wish to call this website',
+])
+
 <div class="w-2/3">
 
     <div class="flex flex-wrap justify-between">
@@ -72,6 +78,13 @@
     'help' => 'This word *must* exist on the web page to confirm the site is online.',
     'prefix' => '🔑',
     'required' => true,
+])
+
+@include('maelstrom::inputs.text', [
+    'name' => 'slack_channel',
+    'label' => 'Slack Channel',
+    'help' => 'Slack channel where the notification will be sent',
+    'required' => false,
 ])
 
 @php($cronKey = data_get($entry, 'cron_key', Str::random(32)))

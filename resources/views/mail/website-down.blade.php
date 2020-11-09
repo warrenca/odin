@@ -1,5 +1,5 @@
 @component('mail::message')
-# Website Offline: {{ $website->url }}
+# Website Offline: {{ $website->name }} ({{ $website->url }})
 
 The above website appears to be offline.
 

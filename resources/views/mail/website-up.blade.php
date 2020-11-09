@@ -1,5 +1,5 @@
 @component('mail::message')
-# Website Back Online: {{ $website->url }}
+# Website Back Online: {{ $website->name }} ({{ $website->url }})
 
 The website had been offline for {{ $website->time_spent_offline }}.
 

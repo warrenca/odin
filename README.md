@@ -89,6 +89,14 @@ Quick install: `npm i pixelmatch`
 
 Deploying the project is very similar to installing it, the steps will differ depending on your hosting environment, there's plenty of tutorials online about how to deploy onto various platforms: https://www.google.com/search?q=how+to+deploy+laravel%20project
 
+## Running
+
+There are few things needed for this to run.
+1) Make sure you have configured and run a Redis server.
+2) php artisan queue:work (can be added in supervisor or similar software)
+3) php artisan horizon (can be added in supervisor or similar software)
+4) Setup a cronjob, `* * * * * ( sleep 30; cd PATH_TO/odin && php artisan scan:uptime && php artisan scan:certificates )`, you can add more scans here or change the sleep value.
+
 ## Screenshots
 
 ### Creating an account

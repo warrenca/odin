@@ -21,7 +21,7 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
         // Horizon::routeMailNotificationsTo('example@example.com');
         // Horizon::routeSlackNotificationsTo('slack-webhook-url', '#channel');
 
-        // Horizon::night();
+        Horizon::night();
     }
 
     /**
@@ -33,8 +33,10 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
      */
     protected function gate()
     {
-        Gate::define('viewHorizon', function () {
-            return config('horizon.enabled', false);
+        Gate::define('viewHorizon', function ($user) {
+            // Only the first user can see the horizon dashboard
+            // Can't use env variable here, don't know why... :(
+            return $user->id === 1;
         });
     }
 }
